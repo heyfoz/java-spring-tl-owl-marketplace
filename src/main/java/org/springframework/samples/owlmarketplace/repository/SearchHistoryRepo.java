@@ -6,9 +6,5 @@ import org.springframework.stereotype.Repository; // Used in the creation of rep
 
 @Repository
 public interface SearchHistoryRepo extends JpaRepository<SearchObject, Long> {
-
-	/*
-	 * @Override Optional<LoanApp> findById(Long id);
-	 */
-
+	@Override Optional<SearchObject> findById(Long id);
 }
