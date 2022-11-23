@@ -53,5 +53,4 @@ public class LovedListingServiceImpl implements LovedListingService {
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 		return this.lovedListingRepo.findAll(pageable);
 	}
-
 }
