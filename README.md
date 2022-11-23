@@ -3,10 +3,12 @@
 <br>
 By Forrest Moulin, Jose Casiano, and Philip Canzian</h2>
 
-> On the Web Listing (OWL) Marketplace is a property listing application project created 
+> On the Web Listing (OWL) Marketplace is a property listing web application project created 
 for Pennsylvania State University's Information Sciences and Technology Integration and
 Problem Solving undergraduate course. OWL Marketplace is a fictitious, non-profit
-organization, and the application code is open-source, provided under the MIT License. 
+organization, and the application code is open-source, provided under the MIT License. The
+source code runs within an Azure App Service while also connecting to an Azure MySQL Database
+for flexible server. To top it off, the project includes a demonstration of Bing Maps API requests!
 
 ```diff
 + Project dependencies:
