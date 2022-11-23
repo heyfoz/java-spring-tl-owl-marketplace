@@ -53,5 +53,4 @@ public class CustomerServiceImpl implements CustomerService {
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 		return this.customerRepository.findAll(pageable);
 	}
-
 }
