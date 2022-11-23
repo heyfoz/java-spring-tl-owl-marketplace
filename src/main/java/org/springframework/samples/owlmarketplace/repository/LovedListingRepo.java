@@ -6,9 +6,5 @@ import org.springframework.stereotype.Repository; // Used in the creation of rep
 
 @Repository
 public interface LovedListingRepo extends JpaRepository<Listing, Long> {
-
-	/*
-	 * @Override Optional<Loan> findById(Long id);
-	 */
-
+	 @Override Optional<Listing> findById(Long id);
 }
