@@ -33,7 +33,7 @@ organization, and the application code is open-source, provided under the MIT Li
 <br><br>
  
 ```diff
-+ API Utilization:
++ REST API Utilization:
 ```
 <!-- **_API Utilization:_** -->
 <ul>
