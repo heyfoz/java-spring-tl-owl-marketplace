@@ -53,5 +53,4 @@ public class PersonnelServiceImpl implements PersonnelService {
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
 		return this.personnelRepository.findAll(pageable);
 	}
-
 }
