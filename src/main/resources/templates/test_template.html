@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OWL Marketplace - PageTitle</title>
+    <link data-th-href="@{/styles/ist440w.css}"
+          rel="stylesheet">
+</head>
+<body style="background-color:#a1d6f7;">
+<div data-th-replace="common/header :: header"></div>
+<br><br>
+<div class="container text-center">
+    <h1 data-th-text ="'Welcome, ' + ${customer.firstName} + '!'"></h1>
+    <div data-th-replace="common/customer_logout_button :: customer_logout_button"></div>
+    <br><br>
+    <hr>
+</div>
+<div class="container my-2">
+    <h2>
+        <span data-th-if="${lovedPropertyArrayList.size() == 0}">No Loved Properties Found</span>
+        <span data-th-if="${lovedPropertyArrayList.size() > 0}"
+              data-th-text="'Loved Properties: ' + ${lovedPropertyArrayList.size()} + ' Total'"></span>
+    </h2>
+    <table border="1" class = "table table-striped table-responsive-md" style="background-color:white;">
+        <thead>
+        <tr>
+            <th>Listing Name</th>
+            <th>Rental/Buy</th>
+            <th>Price</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th># of Bedrooms</th>
+            <th># of Bathrooms</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- $ dialect used for variables -->
+        <tr data-th-each="loan : ${lovedPropertyArrayList}">
+            <td data-th-text="${loan.lId}"></td>
+            <td data-th-text="${loan.startDate}"></td>
+            <td data-th-text="${loan.getDoubleWithTwoDecimals(loan.principal)}"></td>
+            <td data-th-text="${loan.APR}"></td>
+            <td data-th-text="${loan.term}"></td>
+            <td data-th-text="${loan.getDoubleWithTwoDecimals(loan.monthlyPayment)}"></td>
+            <td data-th-text="${loan.getDoubleWithTwoDecimals(loan.balance)}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container my-2">
+    <a data-th-href = "@{/loanAppForm/(cId=${customer.cId})}" class="btn btn-primary btn-sm mb-3">
+        New Listing Search
+    </a>
+    <br>
+    <a  data-th-href = "@{/showCustomerAppDashboard/(cId=${customer.cId})}">Detailed Search History List</a>
+    <div data-th-replace="common/footer :: footer"></div>
+</div>
+</body>
+<!-- MISC CODE USED IN DEV/TESTING -->
+<!--    <a  data-th-href = "@{/showCustomerAppDashboard/(customerId=${customer.cId})}">Loan Application History</a>-->
+<!--    <div class="container text-center">-->
+<!--        <p>Contact Us <br>Phone: 800-123-4567<br>Email: propertylistingapp@psugroup7.com<br><br></p>-->
+<!--    </div>-->
+<!-- @ dialect used for links -->
+<!-- Not yet implemented-->
+<!-- <td> <a data-th-href="@{/showLoanDetails/{id}(id=${loan.loanId})}" class="btn btn-primary">View Loan</a>-->
+<!-- No longer needed if using data-th syntax: xmlns:th="https://www.thymeleaf.org"-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+          crossorigin="anonymous">-->-->

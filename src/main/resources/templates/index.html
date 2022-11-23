@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OWL Marketplace - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+          crossorigin="anonymous">
+    <link data-th-href="@{/styles/ist440w.css}" rel="stylesheet">
+    <link data-th-href="@{/styles/style1.css}" rel="stylesheet">
+</head>
+<body style="background-color:#a1d6f7;">
+<div data-th-replace="common/header :: header"></div>
+
+<!--<div style="display: flex; justify-content: center;">-->
+<!--</div>-->
+<div id="container" class="container text-center">
+  <h1>On the Web Listing (OWL) Marketplace</h1>
+  <h2 style="font-size:24px">By PSU IST 440W Group 7 - Summer 2022</h2>
+  <br><p></p> <!-- Spacing -->
+  <div>
+      <span style="font-size:16px">
+        <span style="font-style:italic;font-weight:650">
+          On the Web Listing (OWL) Marketplace</span>
+      was created as a capstone project for Pennsylvania<br>
+      State University's Information Sciences and Technology Integration and Problem Solving<br>
+      undergraduate course. This property listing  application project was expanded upon by <br>
+      Forrest Moulin, who integrated an Azure MySQL Database for flexible server, an Azure Web <br>
+      App Service, and Bing Maps API. Furthermore, OWL Marketplace is a fictitious, non-profit <br>
+      organization, and the application code is open-source, provided under the MIT License.
+      <br><br>
+     </span>
+  </div>
+
+  <a class = "a" data-th-href="@{/showCustomerLoginForm}">Log In</a><br>
+  <a class = "a" data-th-href="@{/showCustomerSignUpForm}">Sign Up</a><br>
+  <a class = "a" data-th-href="@{/showBingMapsSearch}">Bing Maps Streetside Image/Static Map Search</a>
+</div>
+
+
+
+<div data-th-replace="common/footer :: footer"></div>
+</body>
+</html>
+<!-- MISC CODE USED DURING DEVELOPMENT/TESTING-->
+<!--<div class="container text-center">-->
+<!--    <p style="font-size:18px">-->
+<!--        <br>Software Engineered by Forrest Moulin, Philip Canzian, and Jose Casiano<br>-->
+<!--    </p>-->
+<!--</div>-->
+<!--Other Images to be commented in later -forrest 6/27-->
+<!--<div class="container text-center" id="StreetViewFMHome"><img alt="StreetViewFMHome" height="300" width="500"-->
+<!--           src="https://dev.virtualearth.net/REST/v1/Imagery/Map/Streetside/1%20Microsoft%20Way%20Redmond,%20WA?zoomlevel=0&key=Ank575Tnepq0y8s3xPTSuxrW5hbX_7hx9032PAcMQKfLJptJAU_E-VTaYJe6M9VU"-->
+<!--           data-th-attr="src='https://dev.virtualearth.net/REST/v1/Imagery/Map/Streetside/1%20Microsoft%20Way%20Redmond,%20WA?zoomlevel=0&key=Ank575Tnepq0y8s3xPTSuxrW5hbX_7hx9032PAcMQKfLJptJAU_E-VTaYJe6M9VU'"/>-->
+<!--</div>-->
+<!--<br>-->
+<!--<div class="container text-center" id="StreetViewPSUIST"><img alt="StreetViewPSUIST" neight="300" width="500"-->
+<!--         src="https://dev.virtualearth.net/REST/v1/Imagery/Map/Streetside/1%20Microsoft%20Way?zoomlevel=0&key=Ank575Tnepq0y8s3xPTSuxrW5hbX_7hx9032PAcMQKfLJptJAU_E-VTaYJe6M9VU"-->
+<!--         data-th-attr="src='https://dev.virtualearth.net/REST/v1/Imagery/Map/Streetside/1%20Microsoft%20Way%20Redmond,%20WA?zoomlevel=0&key=Ank575Tnepq0y8s3xPTSuxrW5hbX_7hx9032PAcMQKfLJptJAU_E-VTaYJe6M9VU'"/>-->
+<!--</div>-->
+<!--<br>-->
+<!--<div class="container text-center">-->
+<!--    <iframe width="500" height="400" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=40.8004180225451~-77.85308808088303&lvl=19&typ=d&sty=h&src=SHELL&FORM=MBEDV8" scrolling="no">-->
+<!--    </iframe>-->
+<!--    <div style="white-space: nowrap; text-align: center; width: 500px; padding: 6px 0;">-->
+<!--        <a id="largeMapLink" target="_blank" href="https://www.bing.com/maps?cp=40.8004180225451~-77.85308808088303&amp;sty=h&amp;lvl=19&amp;FORM=MBEDLD">View Larger Map</a>-->
+<!--    </div>-->
+<!--</div>-->

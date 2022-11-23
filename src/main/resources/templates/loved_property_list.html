@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>OWL Marketplace - Loved Properties</title>
+  <link data-th-href="@{/styles/ist440w.css}" rel="stylesheet">
+</head>
+<body style="background-color:#a1d6f7;">
+
+<div data-th-replace="common/header :: header" data-th-href = "@{/showCustomerDashboard/(cId=${customer.cId})}"></div>
+<div class="container text-center">
+  <h1>On the Web Listing (OWL) Marketplace Loved Property List</h1>
+  <h2 data-th-text ="'Welcome home, ' + ${customer.firstName} + '!'"></h2>
+  <div data-th-replace="common/customer_logout_button :: customer_logout_button"></div>
+  <br>
+</div>
+<div class="container my-2">
+  <h2>
+    <span data-th-if="${lovedPropertyArrayList.size() == 0}" class ="red-hover">No Loved Properties Found</span>
+    <span data-th-if="${lovedPropertyArrayList.size() > 0}"
+          data-th-text="'Loved Properties: ' + ${lovedPropertyArrayList.size()}"></span>
+  </h2>
+  <table border="1" class = "table table-striped table-responsive-md" style="background-color:white;">
+    <thead>
+    <tr>
+      <th>Listing Name</th>
+      <th>Rental/Purchase</th>
+      <th>Price ($)</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip Code</th>
+      <th># of Bedrooms</th>
+      <th># of Bathrooms</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- $ dialect used for variables -->
+    <tr data-th-each="listing : ${lovedPropertyArrayList}">
+      <td data-th-text="${listing.getName()}"></td>
+      <td data-th-text="${listing.getPurchaseType()}"></td>
+      <!-- Use formatDecimal to place commas & decimal precision of 2 -->
+      <td data-th-text="${#numbers.formatDecimal(listing.getPrice(), 0, 'COMMA', 2, 'POINT')}"></td>
+      <td data-th-text="${listing.getCity()}"></td>
+      <td data-th-text="${listing.getState()}"></td>
+      <td data-th-text="${listing.getZip().toString()}"></td>
+      <td data-th-text="${listing.getNumBedrooms()}"></td>
+      <td data-th-text="${listing.getNumBathrooms()}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container my-2">
+  <a data-th-href = "@{/searchForm/(cId=${customer.cId})}" class="btn btn-primary btn-sm mb-3">
+    New Listing Search
+  </a>
+  <br>
+  <a  class= "a" data-th-href = "@{/showSavedSearches/(cId=${customer.cId})}" tabindex="0">
+    Detailed Saved Searches List
+  </a>
+  <div data-th-replace="common/footer :: footer"></div>
+</div>
+</body>
+<!-- MISC CODE USED DURING DEVELOPMENT/TESTING-->
+<!-- No longer needed if using data-th syntax: xmlns:th="https://www.thymeleaf.org"-->
+<!--    <a  data-th-href = "@{/showCustomerAppDashboard/(customerId=${customer.cId})}">Loan Application History</a>-->
+<!--    <div class="container text-center">-->
+<!--        <p>Contact Us <br>Phone: 800-123-4567<br>Email: propertylistingapp@psugroup7.com<br><br></p>-->
+<!--    </div>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+          crossorigin="anonymous">-->
+<!-- @ dialect used for links -->
+<!-- Not yet implemented-->
+<!-- <td> <a data-th-href="@{/showLoanDetails/{id}(id=${loan.loanId})}" class="btn btn-primary">View Loan</a>-->
+<!--<h1>Welcome to eFinance!</h1>-->
+<!--    <hr>-->
+

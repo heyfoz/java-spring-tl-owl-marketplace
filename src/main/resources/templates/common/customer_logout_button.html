@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div data-th-fragment="customer_logout_button" class = "container text-center">
+    <div class="dropdown">
+        <button style="width: 150px;">My Account</button>
+        <div class="dropdown-content">
+            <form action="#" data-th-action="@{/customerLogout}" method="POST">
+                <button type="submit" class="btn btn-danger" style="background-color:#DA454A"
+                        data-th-onclick="return confirm('Are you sure you would like to log out?')">
+                    Logout</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

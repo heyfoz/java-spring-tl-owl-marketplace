@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!--The following is needed when not using data-th syntax: xmlns:th="https://www.thymeleaf.org"-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OWL Marketplace - Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+          crossorigin="anonymous">
+    <link data-th-href="@{/styles/ist440w.css}" rel="stylesheet">
+    <link data-th-href="@{/styles/style1.css}" rel="stylesheet">
+</head>
+<body style="background-color:#a1d6f7;">
+<div data-th-replace="common/header :: header"></div>
+<div class="container text-center">
+    <h1>On the Web Listing (OWL) Marketplace - Sign Up</h1>
+    <form  id="form" action="#" data-th-action="@{/customerSignUp}" data-th-object="${customer}" method="POST">
+        <label class="label">First Name
+            <input id="firstname" type="text" data-th-field="*{firstName}" class="form-control mb-4 col-4"
+                   style="text-align:center" autofocus required maxlength="50" size="50" placeholder="Max 50 characters">
+        </label><br>
+        <label>Last Name
+            <input id="lastname" type="text" data-th-field="*{lastName}" class="form-control mb-4 col-4" required
+                   style="text-align:center" maxlength="50" size="50" placeholder="Max 50 characters">
+        </label><br>
+        <label>Email Address
+            <input id="email" type="email" data-th-field="*{email}" class="form-control mb-4 col-4" required
+                   style="text-align:center" maxlength="255" size="50" placeholder="Max 255 characters">
+        </label><br>
+        <label>Zip Code
+            <input id = "zip" type="text" data-th-field="*{zip}"
+                   class="form-control mb-4 col-4" minlength="5" maxlength="5" placeholder="Only first 5 digits"
+                   style="text-align:center" required size="50">
+        </label><br>
+        <label>New Password
+            <input id="password" type="password" data-th-field="*{password}"
+                   class="form-control mb-4 col-4" minlength="6" placeholder="6 to 255 characters"
+                   style="text-align:center" required size="50">
+        </label><br>
+        <label>Confirm New Password
+            <input id="secondpassword" type="password" minlength="6"
+                   style="text-align:center" class="form-control mb-4 col-4" placeholder="6 to 255 characters"
+                   required size="50">
+        </label><br>
+        <button id="passwordtextbutton" type="submit" class="btn btn-secondary" style="width:20ch"
+                data-th-onclick="'event.preventDefault();togglePassword()'">
+            Show password text
+        </button><br><br>
+        <button id="completesignup" type="submit" class="btn btn-primary" style="width:20ch"
+                data-th-onclick="'return checkPasswords()'";>
+            Complete Sign Up
+        </button>
+    </form>
+    <p></p> <!-- Spacing between button and hyperlink-->
+    <a class= "a" id="loginurl" data-th-href = "@{/showCustomerLoginForm}">Login Page</a>
+    <p></p>
+    <p></p>
+    <div data-th-replace="common/footer :: footer"></div>
+</div>
+<!-- Testing a script here -->
+<script type="text/javascript">
+    function checkPasswords(){ // Checks password length and verifies match
+        let secondpassword = document.getElementById('secondpassword').value; // Get secondpassword value from html doc
+        let password = document.getElementById('password').value; // Get password value from html doc
+        if (password.length > 255 || secondpassword.length > 255) {
+            document.getElementById('password').focus();
+            alert("Password must be 6 to 255 characters - JavaScript function :)");
+            return false; // Exit the form action (don't create a new customer)
+        }
+        else if(password != secondpassword) { // If passwords don't match
+            document.getElementById('password').focus();
+            alert("Passwords must match. Please enter the same password twice.")
+            return false; // Exit the form action (don't create a new customer)
+        }
+        else { // Password match
+            confirm('Please confirm Sign Up details before selecting \'Ok\'.');
+            return true; // Continue with the form action to create new customer
+        }
+    }
+</script>
+<script type="text/javascript">
+    function togglePassword() { // Shows/hides passwords when button is clicked
+        if(document.getElementById('password').getAttribute("type") === "password"){
+            document.getElementById('password').setAttribute("type", "text");
+            document.getElementById('secondpassword').setAttribute("type", "text");
+            document.getElementById('passwordtextbutton').innerText = "Hide password text";
+        }
+        else {
+            document.getElementById('password').setAttribute("type", "password");
+            document.getElementById('secondpassword').setAttribute("type", "password");
+            document.getElementById('passwordtextbutton').innerText = "Show password text";
+        }
+    }
+</script>
+</body>
+</html>
+<!-- MISC CODE USED DURING DEVELOPMENT/TESTING-->
+<!--    <button type="submit" class="btn btn-secondary" data-th-onclick="'togglePassword()'">-->
+<!--        Show password-->
+<!--    </button>-->
+<!--        <script>-->
+<!--            function checkPasswords(pass, secondPass) {-->
+<!--                var pass = pass;-->
+<!--                var secondPass = secondPass;-->
+<!--                if(pass === secondPass){-->
+<!--                    return confirm('Pass equals secondPass in js');-->
+<!--                    console.log('Pass equals secondPass... data might be inaccurate');-->
+<!--                    return confirm('Please confirm Sign Up details before selecting \'Ok\'.');-->
+<!--                    copyToClipboard();-->
+<!--                }-->
+<!--                else{-->
+<!--                    return confirm('Please confirm that the passwords entered as matching.');-->
+<!--                }-->
+<!--            };-->
+<!--            function copyToClipboard() {-->
+<!--                console.log('Copy clipboard function called');-->
+<!--                /* Get the text field */-->
+<!--                var copyText = document.getElementById("password");-->
+<!--                /* Select the text field */-->
+<!--                copyText.select();-->
+<!--                copyText.setSelectionRange(0, 99999); /* For mobile devices */-->
+<!--                /* Copy the text inside the text field */-->
+<!--                navigator.clipboard.writeText(copyText.value);-->
+<!--                /* Alert the copied text */-->
+<!--                alert("Copied the text: " + copyText.value);-->
+<!--            }-->
+<!--        </script>-->
+<!--        <button type="submit" class="btn btn-primary"-->
+<!--            data-th-onclick="return confirm('Please confirm Sign Up details before selecting \'Ok\'.')">-->
+<!--            Sign Up-->
+<!--        </button>-->
+<!--        onclick="checkPasswords(document.getElementById("password").toString(), document.getElementById("secondpassword").toString())">-->
+<!--        onclick="checkPasswords(document.getElementById(password).toString(), document.getElementById(secondpassword).toString())">-->
+<!--        data-th-onclick="return confirm('Please enter matching passwords before proceeding. \'Ok\'.')">-->
+<!--                event.preventDefault();-->
+<!--    <span data-th-if="${lovedPropertyArrayList.size() == 0}">No Loved Properties Found</span>-->
+<!--    <input id="hiddenpassword" type="text" data-th-hidden="true"-->
+<!--           placeholder="Enter Password Here" class="form-control mb-4 col-4" required minlength="6">-->
+<!--    <input id="hiddensecondpassword" type="text" data-th-hidden="true"-->
+<!--           placeholder="Enter Password a Second Time to Confirm" class="form-control mb-4 col-4" required-->
+<!--           minlength="6">-->
+<!--        <input type="hidden" data-th-field="*{cId}">-->
+<!--        <input type="hidden" data-th-field="*{signUpDate}">-->

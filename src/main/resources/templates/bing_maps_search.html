@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OWL Marketplace - Streetside Image and Map Search</title>
+    <link data-th-href="@{/styles/ist440w.css}" rel="stylesheet">
+</head>
+<body style="background-color:#a1d6f7;">
+
+<div data-th-replace="common/header :: header"></div>
+<div class="container text-center">
+    <h1>On the Web Listing (OWL) Marketplace</h1>
+    <h2>Streetside Image & Static Map Searches <br>Using <span style="font-style:italic">Bing Maps API</span></h2>
+    <br>
+</div>
+
+<div class="text-center">
+    <label class="text-center">Address<br>
+        <input id="addressinput" type="text"
+               placeholder="Please enter an address" size="50" style="text-align:center"
+               required>
+    </label><br><br>
+    <label class="text-center">Zoom % (5 min, 100 max)<br>
+        <input id="zoomlevelinput"  type="number" min="5" max="100"
+               step="5" value="5">
+    </label><br><br>
+</div>
+
+<div class="text-center">
+    <button class="btn btn-primary btn-sm mb-3"
+       data-th-onclick="'bingRequest()'">
+        Streetside Image Search
+    </button>
+
+    <button class="btn btn-primary btn-sm mb-3"
+       data-th-onclick="'localSearch()'">
+        Static Map Search
+    </button>
+</div>
+
+<div class="text-center">
+    <img id="streetsideimg" alt="Streetside image not found for this address" height="300" width="450" hidden
+         style="border: 2px solid #245892;"/><br><br>
+    <a class= "a" target="_blank"
+       href="LinkToJoinMicrosoftTeamsMeeting">
+      Click Here to Join a Virtual Open House Meeting in Microsoft Teams</a><br>
+</div>
+<div data-th-replace="common/footer :: footer"></div>
+
+<script>
+    type="text/javascript"
+
+    function areYouSure(){
+        if(document.getElementById("addressinput").value === ""){
+            alert('Search input is empty. Please specify a search address.')
+            return false;
+        }
+        confirm('Please check the address field before proceeding.');
+        if(confirm === true) {
+            bingRequest();
+        }
+        else{
+            alert('Search canceled.')
+            return false;
+        }
+    }
+
+    function bingRequest(){
+        if(document.getElementById('addressinput').value === "") {
+            alert('To view a streetside image, please enter an address in the Address text field.');
+        }
+        else{
+            var baseStreetsideURL = "https://dev.virtualearth.net/REST/v1/Imagery/Map/Streetside/";
+            var addressInput = document.getElementById("addressinput").value;
+            // INSERT BING MAPS API KEY BELOW
+            var bingMapsKey = "&key=InsertTheBingMapsAPIKeyHere";
+            addressInput.replace(" ", "%20");
+            var finalStreetsideURL = baseStreetsideURL + addressInput + getZoomLevelString() + bingMapsKey;
+
+            document.getElementById("streetsideimg").setAttribute("src",finalStreetsideURL);
+            document.getElementById("streetsideimg").hidden = false;
+        }
+    }
+</script>
+
+<script>
+    type="text/javascript"
+    function localSearch(){
+        if(document.getElementById('addressinput').value === ""){
+            alert('To view a local map, please enter an address in the Address text field.');
+        }
+        else{
+            var baseStaticURL = "https://dev.virtualearth.net/REST/v1/Imagery/Map/AerialWithLabels/";
+            var query = document.getElementById("addressinput").value + "?";
+            // Insert Bing Maps key here, or alternatively, get it from Java program
+            var bingMapsKey = "&key=InsertTheBingMapsAPIKeyHere";
+            //var zoomLevel ="&zoomlevel=17";
+            query.replace(" ", "%20");
+            var finalStaticURL = baseStaticURL + query + getZoomLevelString2() + bingMapsKey;
+
+            document.getElementById("streetsideimg").setAttribute("src",finalStaticURL);
+            document.getElementById("streetsideimg").hidden = false;
+            // alert("Final Static Map URL: " + finalStaticURL);
+        }
+        const getJSON = async url => {
+            const response = await fetch(url);
+            return response.json(); // get JSON from the response
+        }
+        function jasondata(data) {
+        // Function code here
+        }
+    }
+    function getZoomLevelString() {
+        var zoomLevel0 = 1;
+        zoomLevel0 = document.getElementById('zoomlevelinput').value /5;
+        if(zoomLevel0 > 0 && zoomLevel0 <21){
+            var zoomLevelString = "?zoomlevel=" + zoomLevel0;
+        }
+        else {
+            alert('Zoom percentage must be a value from 5 to 100 (in denominations of 5). A default value of 5% has been added.')
+            zoomLevel0 = 1;
+            document.getElementById('zoomlevelinput').value = 5;
+            zoomLevelString = "?zoomlevel=" + zoomLevel0;
+        }
+        return zoomLevelString;
+    }
+    function getZoomLevelString2() {
+        var zoomLevel0 = 1;
+        zoomLevel0 = document.getElementById('zoomlevelinput').value /5;
+        var zoomLevelString = "&zoomlevel=" + zoomLevel0;
+        return zoomLevelString;
+    }
+</script>
+
+<script>
+    type="text/javascript"
+    function bingRequest3(){
+        var staticMapBaseURL = "https://dev.virtualearth.net/REST/v1/Imagery/Map/";
+        responseObject = readJsonFromURL(staticMapBaseURL);
+        var addressInput = document.getElementById("addressinput").value;
+        var zoomLevel = document.getElementById('zoomlevelinput').value;//"17"; // 0 to 20
+        var imagerySet = "AerialWithLabels";
+        var latitude = 40.807213;
+        var longitude = -77.85887;
+        var centerPoint = latitude + "," + longitude;
+        var iconStyle = "48"; // 33, 36, or 48 are nice options
+        var pushpinLabel = "";
+        var pushpin = centerPoint + ";" + iconStyle + ";" + pushpinLabel;
+        // INSERT BING MAPS API KEY BELOW
+        var bingMapsKey = "InsertYourBingMapsAPIKeyHere";
+        addressInput.replace(" ", "%20");
+        var finalStaticMapURL = staticMapBaseURL + imagerySet + "/" + centerPoint + "/" + zoomLevel + "?"
+            + "pushpin=" + pushpin + "&key=" + bingMapsKey;
+        document.getElementById("streetsideimg").setAttribute("src",finalStaticMapURL);
+        document.getElementById("streetsideimg").hidden = false;
+    }
+</script>
+</body>
+</html>
+<!-- MISC CODE USED DURING DEVELOPMENT/TESTING-->
+<!--// var jsondata = "";-->
+<!--// var response = "";-->
+<!--// import fetch from 'node-fetch';-->
+<!--// fetch(finalStreetsideURL)-->
+<!--//     .then(response => {-->
+<!--//         return response.json();-->
+<!--//     })-->
+<!--//     .then(jsondata => response);-->
+<!--// alert(jsondata);-->
+<!--// var zoomLevel0 = 1;-->
+<!--// zoomLevel0 = document.getElementById('zoomlevelinput').value;-->
+<!--// var zoomLevelString = "?zoomlevel=" + zoomLevel0;-->
+<!--//-->
+<!--// var zoomLevel = "?zoomlevel=6";-->
+<!--// var jsondata = "";-->
+<!--// var response = "";-->
+<!--// import fetch from 'node-fetch';-->
+<!--// fetch(finalStreetsideURL)-->
+<!--//     .then(response => {-->
+<!--//         return response.json();-->
+<!--//     })-->
+<!--//     .then(jsondata => response);-->
+<!--// alert(jsondata);-->
+<!--<div class="col-1 offset-8">-->
+<!--    <img  class="img"-->
+<!--          alt="PSU" height="100" width="150" src="../images/lion_150x100.png"-->
+<!--          data-th-attr="src=@{/images/lion_150x100.png}"/>-->
+<!--</div>-->
+<!--<div class="col-1 offset-8">-->
+<!--    <p class="red-text">-->
+<!--        A streetside image is not available for this address.-->
+<!--    </p>-->
+<!--</div>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+          crossorigin="anonymous">-->
+<!--    <div data-th-replace="common/customer_logout_button :: customer_logout_button"></div>-->
+<!--    return areYouSure()-->
+<!--    <button class="btn btn-primary btn-sm mb-3"-->
+<!--       data-th-onclick="'bingRequest3()'">-->
+<!--        Static Map Search-->
+<!--    </button>-->
+<!--//alert(finalStreetsideURL);-->
+<!--class="col-1 offset-6"-->
+<!-- No longer needed if using data-th syntax: xmlns:th="https://www.thymeleaf.org"-->

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>OWL Marketplace - Saved Searches</title>
+  <link data-th-href="@{/styles/ist440w.css}" rel="stylesheet">
+</head>
+<body style="background-color:#a1d6f7;">
+<div data-th-replace="common/header :: header"></div>
+<div class="container text-center">
+  <h1 ><span style="color:#323232">On the Web Listing (OWL) Marketplace Saved Searches</span></h1>
+  <h2 data-th-text ="'Welcome home, ' + ${customer.firstName} + '!'"></h2>
+  <div data-th-replace="common/customer_logout_button :: customer_logout_button"></div>
+  <br>
+</div>
+<div class="container my-2">
+  <h2>  <span data-th-if="${savedSearchArrayList.size() == 0}"class="red-hover">No Previously Saved Searches</span>
+    <span data-th-if="${savedSearchArrayList.size() > 0}"
+          data-th-text="'Saved Searches: ' + ${savedSearchArrayList.size()}"></span>
+  </h2>
+  <table border="1" class = "table table-striped table-responsive-md" style="background-color:white;">
+    <thead>
+    <tr>
+      <!--      <th>Listing Name</th>-->
+      <th>Rental/Purchase</th>
+      <th>Price ($)</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip Code</th>
+      <th># of Bedrooms</th>
+      <th># of Bathrooms</th>
+      <th>Search Date</th>
+<!--      <th># of Bathrooms</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-th-each="searchObject : ${savedSearchArrayList}">
+      <td data-th-text="${searchObject.getPurchaseType()}"></td>
+      <!-- Use formatDecimal to place commas & decimal precision of 2 -->
+      <td data-th-text="${#numbers.formatDecimal(searchObject.getPrice(), 0, 'COMMA', 2, 'POINT')}"></td>
+      <td data-th-text="${searchObject.getCity()}"></td>
+      <td data-th-text="${searchObject.getState()}"></td>
+      <td data-th-text="${searchObject.getZip()}"></td>
+      <td data-th-text="${searchObject.getNumBedrooms()}"></td>
+      <td data-th-text="${searchObject.getNumBathrooms()}"></td>
+      <td data-th-text="${searchObject.getDate()}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container my-2">
+  <a data-th-href = "@{/searchForm/(cId=${customer.cId})}" class="btn btn-primary btn-sm mb-3">
+    New Listing Search
+  </a>
+  <br>
+  <a class= "a" data-th-href = "@{/showLovedProperties/(cId=${customer.cId})}">
+    Detailed Loved Properties List
+  </a>
+  <div data-th-replace="common/footer :: footer"></div>
+</div>
+</body>
+<!--  MISC CODE USED DURING DEV/TESTING-->
+<!--  <hr>-->
+<!--  <a data-th-href="@{/showCustomerLoginForm}" class="btn btn-primary"
+     data-th-onclick="return confirm('Are you sure you would like to log out?')">Logout
+  </a>-->
+<!--  <a data-th-href="@{/}" class="btn btn-primary"
+     data-th-onclick="return confirm('Are you sure you would like to log out?')">Logout
+  </a>-->
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous">-->
+
+<!--  <div class="container text-center">-->
+<!--    <p>Contact Us <br>Phone: 800-123-4567<br>Email: efinance@atzfinance.com<br><br></p>-->
+<!--  </div>-->
+
+<!-- $ dialect used for variables -->
+<!--    <tr data-th-each="loanApp : ${lovedPropertyArrayList}">-->
+<!--      <td data-th-text="${loanApp.lAId}"></td>-->
+<!--      <td data-th-text="${loanApp.date}"></td>-->
+<!--      <td data-th-text="${loanApp.requestedStartDate}"></td>-->
+<!--      <td data-th-text="${loanApp.getDoubleWithTwoDecimals(loanApp.principal)}"></td>-->
+<!--      <td data-th-text="${loanApp.APR}"></td>-->
+<!--      <td data-th-text="${loanApp.term}"></td>-->
+<!--      <td>-->
+<!--        &lt;!&ndash; href method not yet functional 12/6 Forrest &ndash;&gt;-->
+<!--        <a data-th-if="${loanApp.status == 'Approved'}"-->
+<!--           data-th-href="@{/showLoanAppDetails/(loanAppId=${loanApp.lAId})}">Approved</a>-->
+<!--        <a data-th-if="${loanApp.status == 'Documents Requested'}"-->
+<!--           data-th-href="@{/showLoanAppDetails/(loanAppId=${loanApp.lAId})}">Documents Requested</a>-->
+<!--        <span data-th-if="${loanApp.status} == 'Pending Review'">Pending Review</span>-->
+<!--        &lt;!&ndash;
+<span data-th-if="${loanApp.loanAppStatus} == 'Documents Requested'">Documents Requested</span>&ndash;&gt;-->
+<!--        <span data-th-if="${loanApp.status} == 'Not Approved'">Not Approved</span>-->
+<!--      </td>-->
+<!--      <td data-th-text ="${loanApp.dateOfLastUpdate}"></td>-->
+<!--    </tr>-->
+<!-- @ dialect used for links -->
+<!-- Not yet implemented-->
+<!-- <td> <a data-th-href="@{/showLoanDetails/{id}(id=${loan.loanId})}" class="btn btn-primary">View Loan</a>-->
+<!-- No longer needed if using data-th syntax: xmlns:th="https://www.thymeleaf.org"-->
+<!--  <a data-th-href = "@{/showCustomerDashboard/(customerId=${customer.cId})}">Current Loan(s)</a>-->
+
+

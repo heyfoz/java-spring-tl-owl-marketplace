@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OWL Marketplace - Property Listing Search</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+        crossorigin="anonymous">
+</head>
+<body style="background-color:#a1d6f7;">
+<div data-th-replace="common/header :: header"></div>
+<div class="container text-center">
+  <h1>On the Web Listing (OWL) Marketplace Search</h1>
+  <h2 data-th-text ="'Lets get searching, ' + ${custFirstName} + '!'"></h2>
+  <form id="form" action="#" data-th-action="@{/searchListing}"
+        data-th-object="${searchObject}" method="POST">
+    <input type="hidden" data-th-field="*{customerId}" data-th-value="${cId}">
+    <label> <span style="padding-left:21ch;padding-right:21ch">Price</span>
+      <input type="number" data-th-field="*{price}"
+             class="form-control mb-4 col-4" placeholder="Min $1,000, Max $10,000,000+" size="50"
+             min="1000" max="10000000" step="1000" style="text-align:center" required>
+    </label>
+    <br>
+    <label>Rent/Purchase
+      <input type="text" name="dropdown" list="purchasetype" data-th-field="*{purchaseType}"
+             class="form-control mb-4 col-4" minlength="4" maxlength="8" style="text-align:center"
+             placeholder="Select Rent/Purchase from this dropdown" size="50" required>
+      <datalist id="purchasetype">
+        <option value="Rent">
+        <option value="Purchase">
+      </datalist>
+    </label>
+    <br>
+    <label>City
+      <input type="text" data-th-field="*{city}"
+             placeholder="Max 50 characters" size="50" style="text-align:center"
+             class="form-control mb-4 col-4" required>
+    </label>
+    <br>
+    <label data-th-replace="common/states :: states"></label>
+    <br>
+    <label>Zip
+      <input type="text" style="text-align:center" data-th-field="*{zip}"
+             placeholder="5 digits only" size="50"
+             class="form-control mb-4 col-4" minlength="5" maxlength="5" required>
+    </label>
+    <br>
+    <label><span style="padding-left:17.5ch;padding-right:17.5ch"># of Bedrooms</span>
+      <input type="number" data-th-field="*{numBedrooms}"
+             placeholder="Min 1, Max 10" size="50" style="text-align:center"
+             class="form-control mb-4 col-4" min="1" max="10" step="1" required>
+    </label>
+    <br>
+    <label><span style="padding-left:17.5ch;padding-right:17.5ch"># of Bathrooms</span>
+      <input type="number" data-th-field="*{numBathrooms}"
+             placeholder="Min 1, Max 10" size="50" style="text-align:center"
+             class="form-control mb-4 col-4" min="1" max="10" step="0.5" required>
+    </label>
+    <br>
+    <label>Keywords
+      <input type="text" data-th-field="*{keywords}"
+             placeholder="Separate keywords by spaces" size="50" style="text-align:center"
+             class="form-control mb-4 col-4">
+    </label>
+    <br>
+    <div>
+
+    </div>
+    <button type="submit" class="btn btn-primary"
+            data-th-onclick="'return confirmSubmission()'";>
+      Submit
+    </button>
+  </form>
+  <p></p> <!-- Spacing between button and hyperlink-->
+  <a class="a" data-th-href = "@{/showSavedSearches/(cId=${cId})}">Detailed Search History List</a>
+  <p></p>
+  <div data-th-replace="common/footer :: footer"></div>
+</div>
+<script type="text/javascript">
+  function confirmSubmission() {
+    if(confirm('Would you like to submit your search?. Select Ok to proceed') === true) {
+      // // Submit the form if Ok is selected
+      return true;
+    }
+    else { // Otherwise, return false, and keep form open
+      return false;
+    }
+  }
+</script>
+</body>
+</html>
+
+<!-- MISC CODE USED DURING DEVELOPMENT/TESTING-->
+<!-- No longer needed if using data-th syntax: xmlns:th="https://www.thymeleaf.org"-->
+<!--Table intersection hidden id input:
+field is Set<Customer> customers inside loan app object, value is customerId -->
+<!--        <input type="hidden" data-th-field="*{searchObjectId}">-->
+<!--        <input type="hidden" data-th-field="*{date}">-->
+<!--        <input type="hidden" data-th-field="*{status}">-->

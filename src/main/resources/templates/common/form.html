@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<form id="form" action="#" data-th-action="@{/customerSignUp}" data-th-object="${customer}" method="POST">
+  <!-- Customer Id and SignUpDate are hidden-->
+  <input type="hidden" data-th-field="*{cId}">
+  <input type="hidden" data-th-field="*{signUpDate}">
+  <input type="text" data-th-field="*{firstName}"
+         placeholder="Enter First Name Here" class="form-control mb-4 col-4" autofocus required maxlength="50">
+  <input type="text" data-th-field="*{lastName}"
+         placeholder="Enter Last Name Here" class="form-control mb-4 col-4" required maxlength="50">
+
+  <input type="email" data-th-field="*{email}"
+         placeholder="Enter Email Address Here" class="form-control mb-4 col-4" required maxlength="255">
+
+  <input type="password" data-th-field="*{password}"
+         placeholder="Enter Password Here" class="form-control mb-4 col-4" required minlength="6" maxlength="24"
+         id="password" >
+
+  <!--        onchange="checkPasswordLength(this.value)"-->
+  <input type="password" id="secondpassword" data-th-field="*{passwordConfirmation}"
+         placeholder="Enter Password a Second Time to Confirm" class="form-control mb-4 col-4" required
+         minlength="6" maxlength="255">
+
+  <input type="text" data-th-field="*{zip}"
+         placeholder="Enter Zip Here" class="form-control mb-4 col-4" minlength="5" maxlength="5" required>
+
+  <!--        <button type="submit" class="btn btn-primary"-->
+  <!--                data-th-onclick="return confirm('Please confirm Sign Up details before selecting \'Ok\'.')">-->
+  <!--            Sign Up</button>-->
+
+  <!-- Testing a script here -->
+  <script type="text/javascript">
+    function checkPasswordLength(){
+      let password = document.getElementById('password').value;
+      if (password.length > 6) {
+        console.log("Password is greater than 6 characters (JavScript)");
+        document.getElementById('password');
+        return false;
+        // confirm("Maximum password length is 7 characters");
+        // var url= "@{/customerSignUp}";
+        // window.location = url;
+        // document.getElementById("password").innerHTML = "Limit is 16 characters";
+      }
+      else {
+        console.log("Password is equal to 6 characters... (JavaScript)");
+        alert("Creating your account... Click 'Ok' to return to log in page.");
+        return true;
+      }
+    }
+  </script>
+  <button id="submit" type="submit" class="btn btn-primary"
+          data-th-onclick="'checkPasswordLength()'";>
+    <!--            data-th-onclick="checkPasswordLength(*{password})"-->
+    <!--            data-th-onclick="return confirm('Please confirm Sign Up details before selecting \'Ok\'.')">-->
+    <!--            onclick="checkPasswords(document.getElementById("password").toString(), document.getElementById("secondpassword").toString())">-->
+    <!--            <a href="#" onClick={function(event){ checkPasswords(); copyToClipboard()}}>Test Link</a>-->
+    Sign Up
+  </button>
+</form>
+</body>
+</html>
+<!--        <script>-->
+<!--            function checkPasswords(pass, secondPass) {-->
+<!--                var pass = pass;-->
+<!--                var secondPass = secondPass;-->
+
+<!--                if(pass === secondPass){-->
+<!--                    return confirm('Pass equals secondPass in js');-->
+<!--                    console.log('Pass equals secondPass... data might be inaccurate');-->
+<!--                    return confirm('Please confirm Sign Up details before selecting \'Ok\'.');-->
+<!--                    copyToClipboard();-->
+<!--                }-->
+<!--                else{-->
+<!--                    return confirm('Please confirm that the passwords entered as matching.');-->
+<!--                }-->
+<!--            };-->
+
+<!--            function copyToClipboard() {-->
+<!--                console.log('Copy clipboard function called');-->
+<!--                /* Get the text field */-->
+<!--                var copyText = document.getElementById("password");-->
+
+<!--                /* Select the text field */-->
+<!--                copyText.select();-->
+<!--                copyText.setSelectionRange(0, 99999); /* For mobile devices */-->
+
+<!--                /* Copy the text inside the text field */-->
+<!--                navigator.clipboard.writeText(copyText.value);-->
+<!--                /* Alert the copied text */-->
+<!--                alert("Copied the text: " + copyText.value);-->
+<!--            }-->
+<!--        </script>-->
+
+<!--        <button type="submit" class="btn btn-primary"-->
+<!--            data-th-onclick="return confirm('Please confirm Sign Up details before selecting \'Ok\'.')">-->
+<!--            Sign Up-->
+<!--        </button>-->
+
+<!--        onclick="checkPasswords(document.getElementById("password").toString(), document.getElementById("secondpassword").toString())">-->
+<!--        onclick="checkPasswords(document.getElementById(password).toString(), document.getElementById(secondpassword).toString())">-->
+
+<!--        data-th-onclick="return confirm('Please enter matching passwords before proceeding. \'Ok\'.')">-->
