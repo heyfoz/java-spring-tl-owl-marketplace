@@ -45,15 +45,16 @@ for flexible server. To top it off, the project includes a demonstration of Bing
   
 Link to the PowerPoint file online: 
 <a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20PTT%20-%20Group%207.pptx">
-OWL Marketplace PPT Presentation</a>
+PPT Presentation - OWL Marketplace</a>
 <br>
   
 Link to the written report (PDF):
 <a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20Report.pdf">
-OWL Marketplace PDF Report</a>
+PDF Report - OWL Marketplace</a>
 <br>
 
 Main source code:
-<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/tree/master/src/main">OWL Marketplace Source Code</a>
+<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/tree/master/src/main">
+  Source Code - OWL Marketplace</a>
 <br><br>  
 ***This repository was made for academic purposes only as part of a capstone course project.***
