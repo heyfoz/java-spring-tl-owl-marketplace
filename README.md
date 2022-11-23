@@ -47,6 +47,9 @@ Link to the PowerPoint file online:
   
 Link to the written report (PDF):
 <a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20Report.pdf">On the Web Listing (OWL) Marketplace - PDF Report</a>
-<br><br>
-  
+<br>
+
+Main source code:
+<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/tree/master/src/main">Owl Marketplace Source Code</a>
+<br><br>  
 ***This repository was made for academic purposes only as part of a capstone course project.***
