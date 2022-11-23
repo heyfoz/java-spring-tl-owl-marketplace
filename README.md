@@ -52,6 +52,6 @@ Link to the written report (PDF):
 <br>
 
 Main source code:
-<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/tree/master/src/main">Owl Marketplace Source Code</a>
+<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/tree/master/src/main">OWL Marketplace Source Code</a>
 <br><br>  
 ***This repository was made for academic purposes only as part of a capstone course project.***
