@@ -42,13 +42,11 @@ organization, and the application code is open-source, provided under the MIT Li
 <br>
   
 Link to the PowerPoint file online: 
-<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20PTT%20-%20Group%207.pptx"
-target="_blank">On the Web Listing (OWL) Marketplace - PPT Presentation</a>
+<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20PTT%20-%20Group%207.pptx">On the Web Listing (OWL) Marketplace - PPT Presentation</a>
 <br>
   
 Link to the written report (PDF):
-<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20Report.pdf"
-target="_blank">On the Web Listing (OWL) Marketplace - PDF Report</a>
+<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20Report.pdf">On the Web Listing (OWL) Marketplace - PDF Report</a>
 <br><br>
   
 ***This repository was made for academic purposes only as part of a capstone course project.***
