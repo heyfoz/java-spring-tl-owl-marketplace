@@ -44,11 +44,13 @@ for flexible server. To top it off, the project includes a demonstration of Bing
 <br>
   
 Link to the PowerPoint file online: 
-<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20PTT%20-%20Group%207.pptx">On the Web Listing (OWL) Marketplace - PPT Presentation</a>
+<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20PTT%20-%20Group%207.pptx">
+OWL Marketplace PPT Presentation</a>
 <br>
   
 Link to the written report (PDF):
-<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20Report.pdf">On the Web Listing (OWL) Marketplace - PDF Report</a>
+<a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/blob/master/8.6.22%20Final%20Project%20Report.pdf">
+OWL Marketplace PDF Report</a>
 <br>
 
 Main source code:
