@@ -57,5 +57,5 @@ Main source code:
 <a href="https://github.com/ffm5113/java-spring-tl-owl-marketplace/tree/master/src/main">
   Source Code - OWL Marketplace</a>
 <br><br>  
-***This repository was made for academic purposes only as part of a capstone course project.***
+***This repository was made for academic purposes only as part of a capstone course project.***<br>
 Copyright (c) 2022 Forrest Moulin, Jose Casiano, Philip Canzian
