@@ -58,3 +58,4 @@ Main source code:
   Source Code - OWL Marketplace</a>
 <br><br>  
 ***This repository was made for academic purposes only as part of a capstone course project.***
+Copyright (c) 2022 Forrest Moulin, Jose Casiano, Philip Canzian
