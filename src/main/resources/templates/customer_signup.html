@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<!--The following is needed when not using data-th syntax: xmlns:th="https://www.thymeleaf.org"-->
+<!DOCTYPE html><!— HTML/JavaScript Written by Forrest Moulin-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>OWL Marketplace - Sign Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
-          rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+          rel="stylesheet" 
+          integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
           crossorigin="anonymous">
     <link data-th-href="@{/styles/ist440w.css}" rel="stylesheet">
     <link data-th-href="@{/styles/style1.css}" rel="stylesheet">
@@ -14,7 +14,8 @@
 <div data-th-replace="common/header :: header"></div>
 <div class="container text-center">
     <h1>On the Web Listing (OWL) Marketplace - Sign Up</h1>
-    <form  id="form" action="#" data-th-action="@{/customerSignUp}" data-th-object="${customer}" method="POST">
+    <form  id="form" action="#" data-th-action="@{/customerSignUp}" 
+           data-th-object="${customer}" method="POST">
         <label class="label">First Name
             <input id="firstname" type="text" data-th-field="*{firstName}" 
                    class="form-control mb-4 col-4" style="text-align:center" 
@@ -46,12 +47,14 @@
                    class="form-control mb-4 col-4" style="text-align:center" 
                    placeholder="6 to 255 characters" minlength="6" size="50" required>
         </label><br>
-        <button id="passwordtextbutton" type="submit" data-th-onclick="'event.preventDefault();togglePassword()'"
+        <button id="passwordtextbutton" type="submit" 
+                data-th-onclick="'event.preventDefault();togglePassword()'"
                 class="btn btn-secondary" style="width:20ch">
             Show password text
         </button><br><br>
-        <button id="completesignup" type="submit" data-th-onclick="'return checkPasswords()'";
-                 class="btn btn-primary" style="width:20ch">
+        <button id="completesignup" type="submit" 
+                data-th-onclick="'return checkPasswords()'";
+                class="btn btn-primary" style="width:20ch">
             Complete Sign Up
         </button>
     </form>
