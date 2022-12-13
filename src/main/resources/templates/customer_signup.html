@@ -16,38 +16,42 @@
     <h1>On the Web Listing (OWL) Marketplace - Sign Up</h1>
     <form  id="form" action="#" data-th-action="@{/customerSignUp}" data-th-object="${customer}" method="POST">
         <label class="label">First Name
-            <input id="firstname" type="text" data-th-field="*{firstName}" class="form-control mb-4 col-4"
-                   style="text-align:center" autofocus required maxlength="50" size="50" placeholder="Max 50 characters">
+            <input id="firstname" type="text" data-th-field="*{firstName}" 
+                   class="form-control mb-4 col-4" style="text-align:center" 
+                   placeholder="Max 50 characters"maxlength="50" size="50" autofocus required>
         </label><br>
         <label>Last Name
-            <input id="lastname" type="text" data-th-field="*{lastName}" class="form-control mb-4 col-4" required
-                   style="text-align:center" maxlength="50" size="50" placeholder="Max 50 characters">
+            <input id="lastname" type="text" data-th-field="*{lastName}" 
+                   class="form-control mb-4 col-4" style="text-align:center" 
+                   placeholder="Max 50 characters" maxlength="50" size="50" required>
         </label><br>
         <label>Email Address
-            <input id="email" type="email" data-th-field="*{email}" class="form-control mb-4 col-4" required
-                   style="text-align:center" maxlength="255" size="50" placeholder="Max 255 characters">
+            <input id="email" type="email" data-th-field="*{email}"
+                   class="form-control mb-4 col-4" style="text-align:center" 
+                   placeholder="Max 255 characters" maxlength="255" size="50" required>
         </label><br>
         <label>Zip Code
             <input id = "zip" type="text" data-th-field="*{zip}"
-                   class="form-control mb-4 col-4" minlength="5" maxlength="5" placeholder="Only first 5 digits"
-                   style="text-align:center" required size="50">
+                   class="form-control mb-4 col-4" style="text-align:center" 
+                   placeholder="Only first 5 digits"
+                   minlength="5" maxlength="5" size="50" required>
         </label><br>
         <label>New Password
             <input id="password" type="password" data-th-field="*{password}"
-                   class="form-control mb-4 col-4" minlength="6" placeholder="6 to 255 characters"
-                   style="text-align:center" required size="50">
+                   class="form-control mb-4 col-4"  style="text-align:center"
+                   placeholder="6 to 255 characters" minlength="6" size="50" required>
         </label><br>
         <label>Confirm New Password
-            <input id="secondpassword" type="password" minlength="6"
-                   style="text-align:center" class="form-control mb-4 col-4" placeholder="6 to 255 characters"
-                   required size="50">
+            <input id="secondpassword" type="password" 
+                   class="form-control mb-4 col-4" style="text-align:center" 
+                   placeholder="6 to 255 characters" minlength="6" size="50" required>
         </label><br>
-        <button id="passwordtextbutton" type="submit" class="btn btn-secondary" style="width:20ch"
-                data-th-onclick="'event.preventDefault();togglePassword()'">
+        <button id="passwordtextbutton" type="submit" data-th-onclick="'event.preventDefault();togglePassword()'"
+                class="btn btn-secondary" style="width:20ch">
             Show password text
         </button><br><br>
-        <button id="completesignup" type="submit" class="btn btn-primary" style="width:20ch"
-                data-th-onclick="'return checkPasswords()'";>
+        <button id="completesignup" type="submit" data-th-onclick="'return checkPasswords()'";
+                 class="btn btn-primary" style="width:20ch">
             Complete Sign Up
         </button>
     </form>
@@ -59,9 +63,12 @@
 </div>
 <!-- Testing a script here -->
 <script type="text/javascript">
-    function checkPasswords(){ // Checks password length and verifies match
-        let secondpassword = document.getElementById('secondpassword').value; // Get secondpassword value from html doc
-        let password = document.getElementById('password').value; // Get password value from html doc
+    // Checks password length and verifies match
+    function checkPasswords(){ 
+        // Get secondpassword value from html doc
+        let secondpassword = document.getElementById('secondpassword').value; 
+        // Get password value from html doc
+        let password = document.getElementById('password').value; 
         if (password.length > 255 || secondpassword.length > 255) {
             document.getElementById('password').focus();
             alert("Password must be 6 to 255 characters - JavaScript function :)");
@@ -79,7 +86,8 @@
     }
 </script>
 <script type="text/javascript">
-    function togglePassword() { // Shows/hides passwords when button is clicked
+    // Shows/hides passwords when button is clicked
+    function togglePassword() { 
         if(document.getElementById('password').getAttribute("type") === "password"){
             document.getElementById('password').setAttribute("type", "text");
             document.getElementById('secondpassword').setAttribute("type", "text");
