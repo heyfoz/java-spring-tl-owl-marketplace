@@ -21,6 +21,7 @@ public class ListingSearchController {
 
 	// SimpleDateFormat documentation (Java 17)
 	// https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/SimpleDateFormat.html
+	// E for Thursday
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("E - MM/dd/yyyy h:m a (z)");
 
 	@Autowired // To access list of all customers
